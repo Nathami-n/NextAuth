@@ -11,14 +11,14 @@ export const login = async (values:z.infer< typeof LoginSchema> ) => {
             error: "Invalid credentials",
             success:{
                 state: false,
-                response: null
+                response: undefined
             }
         }}
     };
 
     return {
          data: {
-        error: null,
+        error: undefined,
         success: {
             state: true,
             response: "Success in logging in"
