@@ -34,11 +34,11 @@ export const RegisterForm = () => {
         }
     })
 
-    const onSubmit = async (values: z.infer<typeof LoginSchema>) => {
+    const onSubmit = async (values: z.infer<typeof RegisterSchema>) => {
 
         startTransition(async ()=>{
              const data = await register(values);
-             if(!data.data.success) {
+             if(!data.data.success.state) {
                 setError(data.data.error);
              } else {
                 setSuccess(data.data.success.response);
@@ -48,9 +48,9 @@ export const RegisterForm = () => {
 
     return (
        <CardWrapper 
-       headerLabel="Welcome Back"
-       backButtonLabel="Don't have an account?"
-       backButtonHref="/auth/register"
+       headerLabel="Sign Up"
+       backButtonLabel="Already have an account?"
+       backButtonHref="/auth/login"
        showSocial
        >
         <Form {...form}>
@@ -127,7 +127,7 @@ export const RegisterForm = () => {
                 type="submit"
                 className="w-full"
                 >
-                 Login
+                 Create an account
                 </Button>
             </form>
         </Form>
